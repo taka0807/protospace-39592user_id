@@ -74,12 +74,8 @@ end
 
 # 2行目のbefore_action :move_to_index, only: [:edit ]のmove_to_index(これは何でもよりメソッド)
 # resourceも何でもよいメソッド。
-<<<<<<< Updated upstream
-# ユーザーIDとログインしている人が同じでなかった場合は、トップページに戻る。
-=======
 # ユーザーIDとログインしている人が同じでなかった場合は、トップページに戻る。
 
 # githubはまずはメイン状態で右のボタンを教えてから、コメント実装など作成する。
 # 万が一、コメント実装などを作成してからの場合は、Default branchをmainに変える。（General)
 # エラーが出た際は先にVCで修正してから、githubでrepoする。
->>>>>>> Stashed changes
