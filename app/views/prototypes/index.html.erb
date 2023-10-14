@@ -1,0 +1,20 @@
+<main class="main">
+  <div class="inner">
+    <%# ログインしているときは以下を表示する %>
+    <% if user_signed_in? %>
+       <div class="greeting">
+         こんにちは、
+         <%= link_to "#{current_user.name}さん", user_path(current_user.id), class: :greeting__link%>
+         <%# パスがuser_pathで、rails routesを見ると、右にuser_showとある為、userコントローラーのshowアクションに移動。次にviwのuserに飛ぶ。 %>
+          <%# ログインしているはcurrent_user のid 。 %>
+          <%# パスは二つありどっちを使用しても良い。<%= link_to "マイページ", "/users/#{current_user.id}" %> 
+          <%# では、"は文字列を表す為、current_user.idは変数として扱う為、"がいる。#は二つ目のパスの時必要。current_user_idは、<% if user_signed_in? %>
+      </div>
+      <% end %>
+    <%# // ログインしているときは上記を表示する %>
+    <div class="card__wrapper">
+      <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
+      <%= render partial: 'prototype', collection: @prototypes %>
+    </div>
+  </div>
+</main>

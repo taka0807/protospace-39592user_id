@@ -1,0 +1,15 @@
+<div class="card">
+  <%= link_to image_tag(prototype.image, class: :card__img ), prototype_path(prototype.id)%>
+  <%# prototype_pathはshow(詳細）アクションへ %>
+  <%# ""は文字列として認識される為、削除。また、imageを表現する際はモデルのacticve～は不要 %>
+  <div class="card__body">
+    <%= link_to prototype.title, prototype_path(prototype.id), class: :card__title%>
+    <p class="card__summary">
+      <%= prototype.catch_copy %>
+    </p>
+    <%= link_to prototype.user.name, user_path(prototype.user.id), class: :card__user %>
+    <%# prototype.user.jp はログインしていな時でも表示させる為に。current.userにすると、ログインしていない時は
+    トップページが開かなくなる。prototypeモデルのuserデータのIDを拾うだけ。 %>
+    <%# underfinded method 'id' for nil:NilClassはidの前の記述が中身が空。エラーページの下にcurrent_user入力する。 %>
+  </div>
+</div>
