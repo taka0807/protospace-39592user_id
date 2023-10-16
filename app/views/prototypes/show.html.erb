@@ -4,7 +4,16 @@
       <p class="prototype__hedding">
         <%= @prototype.title%>
       </p>
-      <%= link_to  @prototype.user.name, root_path, class: :prototype__user %>
+      <%= link_to  @prototype.user.name, user_path(@prototype.user.id), class: :prototype__user %>
+      <%# user_pathはrails routeのuserpath。(@prototype.user.id)@prototypeのuserのid。 %>
+
+      <%# rails routesでidがついていた場合は、idは必須。 %>
+      <%# @prototypeのルートは、index.html→renderで_prototypeの %>
+      <%# <%= link_to image_tag(prototype.image, class: :card__img ), prototype_path(prototype.id)%>
+      <%# 写真をクリックするとprototype_path(prototype.id)→controllerのfind(params[:id])に入る。 %>
+      <%# → @prototypeに代入。showに飛んで、(@prototype.user.id)で@prototypeに代入。 %>
+
+
       <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
      <% if user_signed_in? && current_user.id == @prototype.user_id %>
 
@@ -47,15 +56,17 @@
             </div>
            <% end %>
            <% end %>
+           
         <%# // ログインしているユーザーには上記を表示する %>
         <ul class="comments_lists">
           <%# 投稿に紐づくコメントを一覧する処理を記述する %>
           <% @comments.each do |comment| %>
           <%# コメントされた中のコメントを一つ取り出す。@commentsはproのcontrollのshow %>
+          <%# コメントを空のまま押したが、エラーとなった。ターミナルのStarted POST→CommentsController#createに飛ぶ。@commentsを定義する。 %>
             <li class="comments">
              <%= comment.content %>
              <%# 上のブロック変数の|comment| の、テーブルのカラムのcontent %>
-              <%= link_to comment.user.name , root_path, class: :comment_user %>
+              <%= link_to comment.user.name , user_path(@prototype.user.id), class: :comment_user %>
               <%# commentのuseテーブルのname(これで名前が表示される。) pathはrailsroutesのshowアクションのパスを見る %>
             </li>
             <% end %>

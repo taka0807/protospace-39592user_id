@@ -41,13 +41,18 @@ def edit
 end
 
 def update
-   prototype = Prototype.find(params[:id])
-   if prototype.update(prototype_params)
-    redirect_to root_path
+   @prototype = Prototype.find(params[:id])
+   if @prototype.update(prototype_params)
+    redirect_to prototype_path
   else
     render :edit, status: :unprocessable_entity
   end
 end
+# @prototypeは登録出来た場合は使用無。renderになった際だけ使用。
+# prototype_pathでrails routesで確認すると、show以外にも、prototypeはあるが、GETが選定される。
+# GET以外に飛びたい場合は、後ろにID_pathを入れる必要がある為、showに飛ぶ。
+# その後、prorotype contorollerに飛び、vieのshowに飛ぶがその際は、controllerの@prototyoeをviwで使う。
+# renderの場合は、そのままeditに飛んで、その際だけ、updateで定義した@prototypeを使う為、失敗後も保存はされる。
 
 def destroy
   prototype = Prototype.find(params[:id])
