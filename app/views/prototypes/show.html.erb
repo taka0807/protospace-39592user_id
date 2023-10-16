@@ -56,7 +56,7 @@
             </div>
            <% end %>
            <% end %>
-           
+
         <%# // ログインしているユーザーには上記を表示する %>
         <ul class="comments_lists">
           <%# 投稿に紐づくコメントを一覧する処理を記述する %>
@@ -66,7 +66,7 @@
             <li class="comments">
              <%= comment.content %>
              <%# 上のブロック変数の|comment| の、テーブルのカラムのcontent %>
-              <%= link_to comment.user.name , user_path(@prototype.user.id), class: :comment_user %>
+              <%= link_to comment.user.name , user_path(comment.user.id), class: :comment_user %>
               <%# commentのuseテーブルのname(これで名前が表示される。) pathはrailsroutesのshowアクションのパスを見る %>
             </li>
             <% end %>
