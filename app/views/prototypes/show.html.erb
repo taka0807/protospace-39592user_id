@@ -68,6 +68,8 @@
              <%# 上のブロック変数の|comment| の、テーブルのカラムのcontent %>
               <%= link_to comment.user.name , user_path(comment.user.id), class: :comment_user %>
               <%# commentのuseテーブルのname(これで名前が表示される。) pathはrailsroutesのshowアクションのパスを見る %>
+              <%# commentは63行目の一つのコメント。user.idはアソシエーションで %>
+              <%# コメントテーブルのIDを欄のuserid欄を連携し、userテーブルの番号のところに飛ぶ。 %>
             </li>
             <% end %>
           <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
